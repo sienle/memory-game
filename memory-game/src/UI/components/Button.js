@@ -1,3 +1,5 @@
+import { Component } from './Component';
+
 export class Button extends Component {
   constructor({ className, text, onClick }) {
     super({ tag: "button", className, text });

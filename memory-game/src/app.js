@@ -1,16 +1,20 @@
-import { Component } from './UI/components/component';
-import { UI } from './UI/UI';
+import { UI } from "./UI/UI";
+import { Game } from './Game/Game';
+import { Leaderboard } from './Leaderboard/Leaderboard';
 
 export class App {
   constructor() {
-    //this.Game = new Game();
-    this.UI = new UI();
-    //this.LeaderBoard = new LeaderBoard();
+    this.game = new Game();
+    this.leaderboard = new Leaderboard();
+
+    this.ui = new UI({
+      onNewGame: () => this.game.newGame(),
+      onLeaderboard: () => this.leaderboard.load(),
+    });
   }
 
   start() {
-    //this.Game.startGame();
-    this.UI.render();
-    //this.LeaderBoard.load();
+    this.game.startGame();
+    this.ui.render();
   }
 }
