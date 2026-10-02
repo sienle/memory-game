@@ -1,5 +1,5 @@
-import { Component } from "./Component";
-import { img } from "./factory";
+import { Component } from "./components/Component";
+import { img } from "./components/factory";
 
 export class CardComponent extends Component {
   constructor({ card, onClick }) {

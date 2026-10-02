@@ -5,15 +5,19 @@
 *::after {
   box-sizing: border-box;
   user-select: none;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   font-weight: bold;
   text-align: center;
   //outline:  1px solid red;
 }
 
 body {
-  background-color: #FFF1D3;
+  background-color: #fff1d3;
   padding-block: 10px;
+}
+
+image {
+  display: block;
 }
 
 button {
@@ -21,7 +25,7 @@ button {
   border-radius: 100px;
   outline: none;
   border: 3px solid black;
-  background-color: #F6D94A;
+  background-color: #f6d94a;
   cursor: pointer;
 
   &:hover,
@@ -31,7 +35,7 @@ button {
 }
 
 header {
-  background-color: #E94B35;
+  background-color: #e94b35;
   padding: 30px;
   border-radius: 17px;
   display: flex;
@@ -48,4 +52,26 @@ header {
   text-align: center;
   border: 3px solid black;
   border-radius: 20px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

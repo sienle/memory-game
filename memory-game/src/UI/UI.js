@@ -1,8 +1,9 @@
 import { div } from "./components/factory";
 import { Header } from "./components/Header";
+import { GameBoard } from './GameBoard';
 
 export class UI {
-  constructor({onNewGame, onLeaderboard}) {
+  constructor({ onNewGame, onLeaderboard, cards, onCardClick }) {
     this.root = document.body;
     this.wrapper = div("wrapper");
 
@@ -10,10 +11,14 @@ export class UI {
       onNewGame,
       onLeaderboard,
     });
+    this.gameBoard = new GameBoard({
+      cards,
+      onCardClick,
+    });
     this.root.append(this.wrapper.getNode());
   }
 
   render() {
-    this.wrapper.getNode().append(this.header.getNode());
+    this.wrapper.getNode().append(this.header.getNode(), this.gameBoard.getNode());
   }
 }

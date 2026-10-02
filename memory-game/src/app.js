@@ -13,6 +13,8 @@ export class App {
     this.ui = new UI({
       onNewGame: () => this.game.newGame(),
       onLeaderboard: () => this.leaderboard.load(),
+      cards: this.game.getCards(),
+      onCardClick: (card) => this.game.flipCard(card),
     });
     this.game.startGame();
     this.ui.render();
