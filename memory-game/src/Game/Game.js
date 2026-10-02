@@ -2,12 +2,14 @@ import { Deck } from "./Deck";
 import { GameState } from "./GameState";
 
 export class Game {
-  constructor() {
-    this.deck = new Deck();
+  constructor(cardData, pairCount) {
+    this.deck = new Deck(cardData, pairCount);
     this.state = new GameState();
   }
 
   flipCard(card) {
+    if (card.isFlipped) return;
+    if (this.state.flippedCards.length === 2) return;
     card.flip();
     this.state.addFlippedCard(card);
     if (this.state.flippedCards.length === 2) {
@@ -17,23 +19,30 @@ export class Game {
   }
 
   checkCardPair() {
-  const [firstCard, secondCard] = this.state.flippedCards;
+    const [firstCard, secondCard] = this.state.flippedCards;
 
-  if (firstCard.pairId === secondCard.pairId) {
-    firstCard.match();
-    secondCard.match();
+    if (firstCard.pairId === secondCard.pairId) {
+      firstCard.match();
+      secondCard.match();
 
-    this.state.addMatchedPair();
-    this.state.clearFlippedCards();
-  } else {
-    firstCard.reset();
-    secondCard.reset();
-
-    this.state.clearFlippedCards();
+      this.state.addMatchedPair();
+      this.state.clearFlippedCards();
+    } else {
+      setTimeout(() => {
+        firstCard.reset();
+        secondCard.reset();
+        this.state.clearFlippedCards();
+      }, 1000);
+    }
   }
-}
+
+  startGame() {
+    this.state.status = "playing";
+  }
+
   newGame() {
     this.state.reset();
     this.deck.reset();
+    this.state.status = "playing";
   }
 }

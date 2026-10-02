@@ -1,20 +1,28 @@
 import { UI } from "./UI/UI";
-import { Game } from './Game/Game';
-import { Leaderboard } from './Leaderboard/Leaderboard';
+import { Game } from "./Game/Game";
+import { Leaderboard } from "./Leaderboard/Leaderboard";
 
 export class App {
   constructor() {
-    this.game = new Game();
     this.leaderboard = new Leaderboard();
+  }
 
+  async start() {
+    const cardData = await this.loadCardData();
+    this.game = new Game(cardData, 8);
     this.ui = new UI({
       onNewGame: () => this.game.newGame(),
       onLeaderboard: () => this.leaderboard.load(),
     });
+    this.game.startGame();
+    this.ui.render();
   }
 
-  start() {
-    this.game.newGame();
-    this.ui.render();
+  async loadCardData() {
+    const response = await fetch("/json/cardsData.json");
+    if (!response.ok) {
+      throw new Error("Failed to load card data");
+    }
+    return response.json();
   }
 }
