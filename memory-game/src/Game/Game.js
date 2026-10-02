@@ -32,10 +32,8 @@ export class Game {
     this.state.clearFlippedCards();
   }
 }
-  startGame() {
-    console.log("start");
-  }
   newGame() {
-    console.log("new game");
+    this.state.reset();
+    this.deck.reset();
   }
 }

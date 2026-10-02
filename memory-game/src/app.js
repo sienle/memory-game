@@ -14,7 +14,7 @@ export class App {
   }
 
   start() {
-    this.game.startGame();
+    this.game.newGame();
     this.ui.render();
   }
 }
