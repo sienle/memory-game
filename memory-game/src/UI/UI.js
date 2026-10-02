@@ -1,6 +1,6 @@
 import { div } from "./components/factory";
 import { Header } from "./components/Header";
-import { GameBoard } from './GameBoard';
+import { GameBoard } from "./GameBoard";
 
 export class UI {
   constructor({ onNewGame, onLeaderboard, cards, onCardClick }) {
@@ -19,6 +19,17 @@ export class UI {
   }
 
   render() {
-    this.wrapper.getNode().append(this.header.getNode(), this.gameBoard.getNode());
+    this.wrapper
+      .getNode()
+      .append(this.header.getNode(), this.gameBoard.getNode());
+  }
+
+  updateCard(card) {
+    this.gameBoard.updateCard(card);
+  }
+  updateCards(cards) {
+    cards.forEach((card) => {
+      this.gameBoard.updateCard(card);
+    });
   }
 }

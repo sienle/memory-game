@@ -9,7 +9,7 @@ export class App {
 
   async start() {
     const cardData = await this.loadCardData();
-    this.game = new Game(cardData, 8);
+    this.game = new Game(cardData, 8, (cards) => this.ui.updateCards(cards));
     this.ui = new UI({
       onNewGame: () => this.game.newGame(),
       onLeaderboard: () => this.leaderboard.load(),

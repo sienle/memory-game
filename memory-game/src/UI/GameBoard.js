@@ -10,7 +10,7 @@ export class GameBoard extends Component {
 
     this.cards = cards;
     this.onCardClick = onCardClick;
-
+    this.cardComponents = [];
     this.createCards();
   }
 
@@ -21,7 +21,16 @@ export class GameBoard extends Component {
         onClick: this.onCardClick,
       });
 
+      this.cardComponents.push(cardComponent);
       this.append(cardComponent);
     });
+  }
+
+  updateCard(card) {
+    const cardComponent = this.cardComponents.find(
+      (component) => component.card === card,
+    );
+
+    cardComponent.update();
   }
 }
