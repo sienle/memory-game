@@ -44,6 +44,14 @@ header {
   border-bottom: 3px solid black;
 }
 
+.heading {
+  color: #f6d94a;
+  margin: 0;
+  margin-right: auto;
+  -webkit-text-stroke: 2px black;
+  font-size: 40px;
+}
+
 .wrapper {
   max-width: 1200px;
   width: 100%;
