@@ -14,7 +14,6 @@ export class Game {
     card.flip();
     this.onCardsUpdate([card]);
     this.state.addFlippedCard(card);
-    this.state.addFlippedCard(card);
     if (this.state.flippedCards.length === 2) {
       this.state.addMove();
       this.checkCardPair();
