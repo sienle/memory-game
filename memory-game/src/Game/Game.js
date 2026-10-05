@@ -9,6 +9,7 @@ export class Game {
   }
 
   flipCard(card) {
+    if (this.state.status !== "playing") return;
     if (card.isFlipped) return;
     if (this.state.flippedCards.length === 2) return;
     card.flip();
@@ -28,6 +29,9 @@ export class Game {
       secondCard.match();
 
       this.state.addMatchedPair();
+      if (this.state.matchedPairs === this.deck.pairCount) {
+        this.state.status = "finished";
+      }
       this.state.clearFlippedCards();
       this.onCardsUpdate([firstCard, secondCard]);
     } else {
