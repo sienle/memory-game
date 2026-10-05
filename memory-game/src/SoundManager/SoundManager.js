@@ -5,7 +5,7 @@ export class SoundManager {
     this.cardSound = new Audio("/sounds/card-flip.mp3");
     this.music = new Audio("/sounds/background.mp3");
     this.music.loop = true;
-    this.music.volume = 0.2;
+    this.music.volume = this.enabled ? 0.2 : 0;
     this.cardSound.volume = 0.5;
   }
 
@@ -32,18 +32,12 @@ export class SoundManager {
     this.music.play().catch(() => {});
   }
 
-  stopMusic() {
-    this.music.pause();
-    this.music.currentTime = 0;
-  }
-
   toggle() {
     this.enabled = !this.enabled;
     this.saveSoundState();
+    this.music.volume = this.enabled ? 0.2 : 0;
     if (this.enabled) {
       this.playMusic();
-    } else {
-      this.stopMusic();
     }
     return this.enabled;
   }
