@@ -20,7 +20,7 @@ export class GameInfo extends Component {
   }
 
   update({ moves, matchedPairs }) {
-    this.moves.setTextContent(`Moves: ${moves}`);
-    this.pairs.setTextContent(`Pairs: ${matchedPairs} / 8`);
+    this.moves.setTextContent(`Ходов: ${moves}`);
+    this.pairs.setTextContent(`Найдено пар: ${matchedPairs} из 8`);
   }
 }
