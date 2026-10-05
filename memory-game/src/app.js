@@ -13,7 +13,8 @@ export class App {
       cardData,
       8,
       (cards) => this.ui.updateCards(cards),
-      (state) => this.ui.updateGameInfo(state)
+      (state) => this.ui.updateGameInfo(state),
+      (result) => this.ui.showVictory(result),
     );
     this.ui = new UI({
       onNewGame: () => {
@@ -34,5 +35,9 @@ export class App {
       throw new Error("Failed to load card data");
     }
     return response.json();
+  }
+
+  showVictory({ moves }) {
+    this.victoryModal.show(moves);
   }
 }

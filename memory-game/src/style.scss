@@ -60,7 +60,9 @@ header {
   text-align: center;
   border: 3px solid black;
   border-radius: 20px;
-  box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
+  box-shadow:
+    10px 10px 30px #bebebe,
+    -10px -10px 30px #ffffff;
 }
 
 .game-board {
@@ -78,7 +80,9 @@ header {
   cursor: pointer;
   border-radius: 20px;
   border: 3px solid black;
-  box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
+  box-shadow:
+    10px 10px 30px #bebebe,
+    -10px -10px 30px #ffffff;
 }
 
 .card__image {
@@ -86,4 +90,28 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0 0 0 / 50%);
+  z-index: 100;
+}
+
+.modal--open {
+  display: flex;
+}
+
+.modal__content {
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+}
+
+.modal__button {
+  margin-inline: 10px;
 }

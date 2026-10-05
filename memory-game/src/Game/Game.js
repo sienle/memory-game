@@ -2,11 +2,18 @@ import { Deck } from "./Deck";
 import { GameState } from "./GameState";
 
 export class Game {
-  constructor(cardData, pairCount, onCardsUpdate, onStateUpdate) {
+  constructor(
+    cardData,
+    pairCount,
+    onCardsUpdate,
+    onStateUpdate,
+    onGameFinished,
+  ) {
     this.deck = new Deck(cardData, pairCount);
     this.state = new GameState();
     this.onCardsUpdate = onCardsUpdate;
     this.onStateUpdate = onStateUpdate;
+    this.onGameFinished = onGameFinished;
     this.pairTimeout = null;
   }
 
@@ -41,6 +48,9 @@ export class Game {
       });
       if (this.state.matchedPairs === this.deck.pairCount) {
         this.state.status = "finished";
+        this.onGameFinished({
+          moves: this.state.moves,
+        });
       }
       this.state.clearFlippedCards();
       this.onCardsUpdate([firstCard, secondCard]);

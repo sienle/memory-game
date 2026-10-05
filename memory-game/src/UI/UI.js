@@ -1,6 +1,7 @@
 import { div } from "./components/factory";
 import { Header } from "./Header";
 import { GameBoard } from "./GameBoard";
+import { VictoryModal } from "./VictoryModal";
 
 export class UI {
   constructor({ onNewGame, onLeaderboard, cards, onCardClick }) {
@@ -15,6 +16,9 @@ export class UI {
       cards,
       onCardClick,
     });
+    this.victoryModal = new VictoryModal({
+      onNewGame,
+    });
     this.root.append(this.wrapper.getNode());
   }
 
@@ -22,6 +26,7 @@ export class UI {
     this.wrapper
       .getNode()
       .append(this.header.getNode(), this.gameBoard.getNode());
+    this.root.append(this.victoryModal.getNode());
   }
 
   updateCard(card) {
@@ -39,5 +44,9 @@ export class UI {
 
   updateGameInfo(data) {
     this.header.updateGameInfo(data);
+  }
+
+  showVictory({ moves }) {
+    this.victoryModal.show(moves);
   }
 }
