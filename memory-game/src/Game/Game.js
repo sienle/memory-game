@@ -6,6 +6,7 @@ export class Game {
     this.deck = new Deck(cardData, pairCount);
     this.state = new GameState();
     this.onCardsUpdate = onCardsUpdate;
+    this.pairTimeout = null;
   }
 
   flipCard(card) {
@@ -35,7 +36,7 @@ export class Game {
       this.state.clearFlippedCards();
       this.onCardsUpdate([firstCard, secondCard]);
     } else {
-      setTimeout(() => {
+      this.pairTimeout = setTimeout(() => {
         firstCard.reset();
         secondCard.reset();
         this.state.clearFlippedCards();
@@ -49,6 +50,10 @@ export class Game {
   }
 
   newGame() {
+    if (this.pairTimeout) {
+      clearTimeout(this.pairTimeout);
+      this.pairTimeout = null;
+    }
     this.state.reset();
     this.deck.reset();
     this.state.status = "playing";
