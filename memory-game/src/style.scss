@@ -99,6 +99,10 @@ header {
   transform: rotateY(180deg);
 }
 
+.card--flipped {
+  cursor: default;
+}
+
 .card__front,
 .card__back {
   position: absolute;
