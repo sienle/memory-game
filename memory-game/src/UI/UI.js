@@ -5,13 +5,14 @@ import { VictoryModal } from "./VictoryModal";
 import { LeaderboardModal } from "./LeaderboardModal";
 
 export class UI {
-  constructor({ onNewGame, onLeaderboard, cards, onCardClick }) {
+  constructor({ onNewGame, onLeaderboard, onToggleSound, cards, onCardClick }) {
     this.root = document.body;
     this.wrapper = div("wrapper");
 
     this.header = new Header({
       onNewGame,
       onLeaderboard,
+      onToggleSound,
     });
     this.gameBoard = new GameBoard({
       cards,
@@ -57,5 +58,9 @@ export class UI {
 
   showLeaderboard(results) {
     this.leaderboardModal.show(results);
+  }
+
+  updateSoundButton(enabled) {
+    this.header.updateSoundButton(enabled);
   }
 }

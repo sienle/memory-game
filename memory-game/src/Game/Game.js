@@ -32,6 +32,7 @@ export class Game {
       });
       this.checkCardPair();
     }
+    return true;
   }
 
   checkCardPair() {

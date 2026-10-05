@@ -1,10 +1,12 @@
 import { UI } from "./UI/UI";
 import { Game } from "./Game/Game";
 import { Leaderboard } from "./Leaderboard/Leaderboard";
+import { SoundManager } from "./SoundManager/SoundManager";
 
 export class App {
   constructor() {
     this.leaderboard = new Leaderboard();
+    this.soundManager = new SoundManager();
   }
 
   async start() {
@@ -28,8 +30,18 @@ export class App {
         const results = this.leaderboard.getResults();
         this.ui.showLeaderboard(results);
       },
+      onToggleSound: () => {
+        const enabled = this.soundManager.toggle();
+        this.ui.updateSoundButton(enabled);
+      },
       cards: this.game.getCards(),
-      onCardClick: (card) => this.game.flipCard(card),
+      onCardClick: (card) => {
+        const flipped = this.game.flipCard(card);
+        if (flipped) {
+          this.soundManager.playCardSound();
+          this.soundManager.playMusic();
+        }
+      },
     });
     this.game.startGame();
     this.ui.render();
