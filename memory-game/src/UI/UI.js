@@ -63,4 +63,8 @@ export class UI {
   updateSoundButton(enabled) {
     this.header.updateSoundButton(enabled);
   }
+
+  setChecking(isChecking) {
+    this.gameBoard.setChecking(isChecking);
+  }
 }

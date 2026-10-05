@@ -8,12 +8,14 @@ export class Game {
     onCardsUpdate,
     onStateUpdate,
     onGameFinished,
+    onCheckingChange,
   ) {
     this.deck = new Deck(cardData, pairCount);
     this.state = new GameState();
     this.onCardsUpdate = onCardsUpdate;
     this.onStateUpdate = onStateUpdate;
     this.onGameFinished = onGameFinished;
+    this.onCheckingChange = onCheckingChange;
     this.pairTimeout = null;
   }
 
@@ -25,6 +27,7 @@ export class Game {
     this.onCardsUpdate([card]);
     this.state.addFlippedCard(card);
     if (this.state.flippedCards.length === 2) {
+      this.onCheckingChange(true);
       this.state.addMove();
       this.onStateUpdate({
         moves: this.state.moves,
@@ -55,12 +58,14 @@ export class Game {
       }
       this.state.clearFlippedCards();
       this.onCardsUpdate([firstCard, secondCard]);
+      this.onCheckingChange(false);
     } else {
       this.pairTimeout = setTimeout(() => {
         firstCard.reset();
         secondCard.reset();
         this.state.clearFlippedCards();
         this.onCardsUpdate([firstCard, secondCard]);
+        this.onCheckingChange(false);
       }, 1000);
     }
   }
@@ -74,6 +79,7 @@ export class Game {
       clearTimeout(this.pairTimeout);
       this.pairTimeout = null;
     }
+    this.onCheckingChange(false);
     this.state.reset();
     this.deck.reset();
     this.state.status = "playing";

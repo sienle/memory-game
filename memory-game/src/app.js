@@ -20,6 +20,7 @@ export class App {
         this.leaderboard.addResult(result.moves);
         this.ui.showVictory(result);
       },
+      (isChecking) => this.ui.setChecking(isChecking),
     );
     this.ui = new UI({
       onNewGame: () => {

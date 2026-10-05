@@ -40,4 +40,8 @@ export class GameBoard extends Component {
     this.cardComponents = [];
     this.createCards();
   }
+
+  setChecking(isChecking) {
+    this.getNode().classList.toggle("game-board--checking", isChecking);
+  }
 }

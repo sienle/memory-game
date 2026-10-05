@@ -75,6 +75,10 @@ header {
   padding: 20px;
 }
 
+.game-board--checking .card {
+  cursor: default;
+}
+
 .card {
   aspect-ratio: 1;
   overflow: hidden;
