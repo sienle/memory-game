@@ -50,7 +50,7 @@ export class App {
   }
 
   async loadCardData() {
-    const response = await fetch("/json/cardsData.json");
+    const response = await fetch(`${import.meta.env.BASE_URL}/json/cardsData.json`);
     if (!response.ok) {
       throw new Error("Failed to load card data");
     }

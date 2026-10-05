@@ -46,7 +46,7 @@ export class Header extends Component {
   updateSoundButton(enabled) {
     this.soundIcon.setAttribute(
       "src",
-      enabled ? "/icons/volume.svg" : "/icons/volume-off.svg",
+      enabled ? `${import.meta.env.BASE_URL}icons/volume.svg` : `${import.meta.env.BASE_URL}icons/volume-off.svg`,
     );
 
     this.soundIcon.setAttribute(

@@ -14,9 +14,9 @@ export class CardComponent extends Component {
     this.back = div("card__back");
     this.frontImage = img("card__image");
     this.backImage = img("card__image");
-    this.frontImage.setAttribute("src", `/${this.card.image}`);
+    this.frontImage.setAttribute("src", `${import.meta.env.BASE_URL}${this.card.image}`);
     this.frontImage.setAttribute("alt", "Memory card");
-    this.backImage.setAttribute("src", "/card-back.jpg");
+    this.backImage.setAttribute("src", `${import.meta.env.BASE_URL}card-back.jpg`);
     this.backImage.setAttribute("alt", "Card back");
     this.front.append(this.frontImage);
     this.back.append(this.backImage);
