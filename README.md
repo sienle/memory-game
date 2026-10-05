@@ -40,6 +40,7 @@
 git clone https://github.com/sienle/memory-game.git
 cd memory-game
 git checkout memory-game
+cd memory-game
 ```
 
 ### 2. Установка зависимостей
