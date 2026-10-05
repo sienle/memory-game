@@ -14,14 +14,20 @@ export class App {
       8,
       (cards) => this.ui.updateCards(cards),
       (state) => this.ui.updateGameInfo(state),
-      (result) => this.ui.showVictory(result),
+      (result) => {
+        this.leaderboard.addResult(result.moves);
+        this.ui.showVictory(result);
+      },
     );
     this.ui = new UI({
       onNewGame: () => {
         const cards = this.game.newGame();
         this.ui.resetGame(cards);
       },
-      onLeaderboard: () => this.leaderboard.load(),
+      onLeaderboard: () => {
+        const results = this.leaderboard.getResults();
+        this.ui.showLeaderboard(results);
+      },
       cards: this.game.getCards(),
       onCardClick: (card) => this.game.flipCard(card),
     });

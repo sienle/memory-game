@@ -2,6 +2,7 @@ import { div } from "./components/factory";
 import { Header } from "./Header";
 import { GameBoard } from "./GameBoard";
 import { VictoryModal } from "./VictoryModal";
+import { LeaderboardModal } from "./LeaderboardModal";
 
 export class UI {
   constructor({ onNewGame, onLeaderboard, cards, onCardClick }) {
@@ -19,6 +20,7 @@ export class UI {
     this.victoryModal = new VictoryModal({
       onNewGame,
     });
+    this.leaderboardModal = new LeaderboardModal();
     this.root.append(this.wrapper.getNode());
   }
 
@@ -26,7 +28,10 @@ export class UI {
     this.wrapper
       .getNode()
       .append(this.header.getNode(), this.gameBoard.getNode());
-    this.root.append(this.victoryModal.getNode());
+    this.root.append(
+      this.victoryModal.getNode(),
+      this.leaderboardModal.getNode(),
+    );
   }
 
   updateCard(card) {
@@ -48,5 +53,9 @@ export class UI {
 
   showVictory({ moves }) {
     this.victoryModal.show(moves);
+  }
+
+  showLeaderboard(results) {
+    this.leaderboardModal.show(results);
   }
 }
