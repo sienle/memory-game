@@ -1,35 +1,32 @@
 import { Component } from "./components/Component";
-import { img } from "./components/factory";
+import { div, img } from "./components/factory";
 
 export class CardComponent extends Component {
   constructor({ card, onClick }) {
     super({
-      tag: "article",
+      tag: "div",
       className: "card",
     });
 
     this.card = card;
-    this.image = img("card__image");
-    this.append(this.image);
+    this.inner = div("card__inner");
+    this.front = div("card__front");
+    this.back = div("card__back");
+    this.frontImage = img("card__image");
+    this.backImage = img("card__image");
+    this.frontImage.setAttribute("src", `/${this.card.image}`);
+    this.frontImage.setAttribute("alt", "Memory card");
+    this.backImage.setAttribute("src", "/card-back.jpg");
+    this.backImage.setAttribute("alt", "Card back");
+    this.front.append(this.frontImage);
+    this.back.append(this.backImage);
+    this.inner.appendChildren([this.front, this.back]);
+    this.append(this.inner);
     this.addListener("click", () => onClick(this.card));
     this.update();
   }
 
   update() {
-    if (this.card.isFlipped) {
-      this.showFront();
-    } else {
-      this.showBack();
-    }
-  }
-
-  showFront() {
-    this.image.setAttribute("src", `/${this.card.image}`);
-    this.image.setAttribute("alt", "Memory card");
-  }
-
-  showBack() {
-    this.image.setAttribute("src", "/card-back.jpg");
-    this.image.setAttribute("alt", "Card back");
+    this.getNode().classList.toggle("card--flipped", this.card.isFlipped);
   }
 }
