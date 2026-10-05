@@ -45,6 +45,7 @@ export class App {
     });
     this.game.startGame();
     this.ui.render();
+    this.ui.updateSoundButton(this.soundManager.enabled);
   }
 
   async loadCardData() {
