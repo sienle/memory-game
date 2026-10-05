@@ -30,9 +30,6 @@ export class Game {
       this.state.addMatchedPair();
       this.state.clearFlippedCards();
       this.onCardsUpdate([firstCard, secondCard]);
-
-      this.state.addMatchedPair();
-      this.state.clearFlippedCards();
     } else {
       setTimeout(() => {
         firstCard.reset();
