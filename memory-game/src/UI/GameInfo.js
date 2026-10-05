@@ -9,13 +9,13 @@ export class GameInfo extends Component {
     });
     this.moves = span("game-info__moves");
     this.pairs = span("game-info__pairs");
-    this.append(
+    this.appendChildren([
       div("game-info__item", this.moves),
       div("game-info__item", this.pairs),
-    );
+    ]);
     this.update({
       moves: 0,
-      matchedPairs: 0
+      matchedPairs: 0,
     });
   }
 
