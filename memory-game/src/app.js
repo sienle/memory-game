@@ -11,7 +11,10 @@ export class App {
     const cardData = await this.loadCardData();
     this.game = new Game(cardData, 8, (cards) => this.ui.updateCards(cards));
     this.ui = new UI({
-      onNewGame: () => this.game.newGame(),
+      onNewGame: () => {
+        const cards = this.game.newGame();
+        this.ui.resetGame(cards);
+      },
       onLeaderboard: () => this.leaderboard.load(),
       cards: this.game.getCards(),
       onCardClick: (card) => this.game.flipCard(card),

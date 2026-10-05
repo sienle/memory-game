@@ -33,4 +33,11 @@ export class GameBoard extends Component {
 
     cardComponent.update();
   }
+
+  reset(cards) {
+    this.destroyChildren();
+    this.cards = cards;
+    this.cardComponents = [];
+    this.createCards();
+  }
 }

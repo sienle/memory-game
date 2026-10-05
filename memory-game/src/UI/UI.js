@@ -32,4 +32,8 @@ export class UI {
       this.gameBoard.updateCard(card);
     });
   }
+
+  resetGame(cards) {
+    this.gameBoard.reset(cards);
+  }
 }

@@ -52,6 +52,7 @@ export class Game {
     this.state.reset();
     this.deck.reset();
     this.state.status = "playing";
+    return this.getCards();
   }
 
   getCards() {
