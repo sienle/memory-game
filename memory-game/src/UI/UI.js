@@ -1,5 +1,5 @@
 import { div } from "./components/factory";
-import { Header } from "./components/Header";
+import { Header } from "./Header";
 import { GameBoard } from "./GameBoard";
 
 export class UI {
@@ -35,5 +35,9 @@ export class UI {
 
   resetGame(cards) {
     this.gameBoard.reset(cards);
+  }
+
+  updateGameInfo(data) {
+    this.header.updateGameInfo(data);
   }
 }

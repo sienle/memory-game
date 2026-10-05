@@ -9,7 +9,12 @@ export class App {
 
   async start() {
     const cardData = await this.loadCardData();
-    this.game = new Game(cardData, 8, (cards) => this.ui.updateCards(cards));
+    this.game = new Game(
+      cardData,
+      8,
+      (cards) => this.ui.updateCards(cards),
+      (state) => this.ui.updateGameInfo(state)
+    );
     this.ui = new UI({
       onNewGame: () => {
         const cards = this.game.newGame();
