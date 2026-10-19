@@ -75,8 +75,13 @@ header {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   max-width: 850px;
+  width: min(100%, calc(100vh - 200px));
   margin: 0 auto;
   padding: 20px;
+
+  @media (max-width: 650px) {
+    width: min(100%, calc(100vh - 300px));
+  }
 }
 
 .game-board--checking .card {
