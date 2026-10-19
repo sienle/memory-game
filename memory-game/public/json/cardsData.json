@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "name": "Tralalero Tralala",
+    "image": "tralalero-tralala.png"
+  },
+  {
+    "id": 2,
+    "name": "Boneca Ambalabu",
+    "image": "05-boneca-ambalabu.webp"
+  },
+  {
+    "id": 3,
+    "name": "Ballerina Cappuccina",
+    "image": "13-ballerina-cappuccina.webp"
+  },
+  {
+    "id": 4,
+    "name": "Tung Tung Tung Sahur",
+    "image": "03-tung-tung-tung-sahur.webp"
+  },
+  {
+    "id": 5,
+    "name": "Cappuccino Assassino",
+    "image": "09-cappuccino-assassino.webp"
+  },
+  {
+    "id": 6,
+    "name": "La Vaca Saturno Saturnita",
+    "image": "12-la-vaca-saturno-saturnita.webp"
+  },
+  {
+    "id": 7,
+    "name": "Brr Brr Patapim",
+    "image": "06-brr-brr-patapim.webp"
+  },
+  {
+    "id": 8,
+    "name": "Bombardiro Crocodilo",
+    "image": "02-bombardiro-crocodilo.webp"
+  },
+  {
+    "id": 9,
+    "name": "Lirili Larila",
+    "image": "04-lirili-larila.webp"
+  },
+  {
+    "id": 10,
+    "name": "Chimpanzini Bananini",
+    "image": "07-chimpanzini-bananini.webp"
+  },
+  {
+    "id": 11,
+    "name": "Burbaloni Luliloli",
+    "image": "23-burbaloni-lulilolli.webp"
+  },
+  {
+    "id": 12,
+    "name": "Shpioniro Golubiro",
+    "image": "40-spijuniro-golubiro.webp"
+  },
+  {
+    "id": 13,
+    "name": "Raccooni Watermelunni",
+    "image": "47-raccooni-watermelunni.webp"
+  },
+  {
+    "id": 14,
+    "name": "Cocofanto Elefanto",
+    "image": "22-cocofanto-elefanto.webp"
+  },
+  {
+    "id": 15,
+    "name": "Bobrito Bandito",
+    "image": "17-bobrito-bandito.webp"
+  }
+]
